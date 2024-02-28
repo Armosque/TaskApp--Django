@@ -33,27 +33,35 @@ export const TaskForm = () => {
         loadTask()
     },[])
     return (
-        <div>
+        <div className='max-w-md mx-auto'>
             <form  onSubmit={onSubmit}>
                 <input type="text" placeholder="Tittle" 
-                {...register('title', {required: true})}/>
+                {...register('title', {required: true})}
+                className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
+                />
                 {errors.title && <span>This field is required</span>}
-                <textarea  rows="3" placeholder="Description"
-                {...register('description', {required: true})}>
+                <textarea   rows="3" placeholder="Description"
+                {...register('description', {required: true})}
+                className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'>
                 </textarea>
                 {errors.description && <span>This field is required</span>}
-                <button>Save</button>
+                <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Save</button>
             </form>
-            {params.id && <button onClick={async ()=>{
-                const accepted = window.confirm('Are you sure?')
-                if (accepted){
+            
+            {params.id && (
+            <div >
+                <button
+                onClick={async () => {
                     await deleteTask(params.id)
                     toast.success('Task deleted successfully')
                     navigate('/task')
-                }
-                
-            }}>Delete</button>}
-            
+                }}
+                className='bg-red-500 p-3 rounded-lg block w-full mt-3'>Delete</button>
+
+            </div>
+        
+            )}
+
         </div>
     )
 }

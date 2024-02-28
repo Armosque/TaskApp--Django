@@ -6,15 +6,18 @@ import {Toaster} from 'react-hot-toast'
 export const App = () => {
   return (
       <BrowserRouter>
-
+      <div className='container mx-auto'>
         <Navigation/>
-        <Routes>
-          <Route path="/" element={<Navigate to="/task" />} />
-          <Route path="/task" element={<TaskPage/>} />
-          <Route path="/create" element={<TaskForm/>} />
-          <Route path="/task/:id" element={<TaskForm/>} />
-        </Routes>
-        <Toaster/>
+          <Routes>
+            <Route path="/" element={<Navigate to="/task" />} />
+            <Route path="/task" element={<TaskPage/>} />
+            <Route path="/create" element={<TaskForm/>} />
+            <Route path="/task/:id" element={<TaskForm/>} />
+          </Routes>
+          <Toaster/>
+
+      </div>
+        
       </BrowserRouter>
   )
 }
